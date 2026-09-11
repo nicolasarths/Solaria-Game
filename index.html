@@ -9,14 +9,35 @@
 <body>
     <div id="game-container">
         <header>
-            <h1>Solaria</h1>
-            <p id="ciclo-texto">Ciclo 1</p>
+            <div class="logo-area">
+                <h1>SOLARIA</h1>
+                <span class="sub-logo">Terminal de Colônia</span>
+            </div>
+            <div id="ciclo-badge">Ciclo <span id="ciclo-texto">1</span></div>
         </header>
 
         <section id="painel-recursos">
-            <div class="recurso">🌱 <span id="res-biomassa">50</span></div>
-            <div class="recurso">⚡ <span id="res-energia">30</span></div>
-            <div class="recurso">👥 <span id="res-comunidade">10</span></div>
+            <div class="recurso-card">
+                <span class="icone">🌱</span>
+                <div class="info">
+                    <span class="label">Biomassa</span>
+                    <span id="res-biomassa" class="valor">50</span>
+                </div>
+            </div>
+            <div class="recurso-card">
+                <span class="icone">⚡</span>
+                <div class="info">
+                    <span class="label">Energia</span>
+                    <span id="res-energia" class="valor">30</span>
+                </div>
+            </div>
+            <div class="recurso-card">
+                <span class="icone">👥</span>
+                <div class="info">
+                    <span class="label">Povo</span>
+                    <span id="res-comunidade" class="valor">10</span>
+                </div>
+            </div>
         </section>
 
         <main id="terminal-narrativo">
@@ -24,17 +45,21 @@
         </main>
 
         <footer id="painel-acoes">
+            <button id="btn-captar" class="acao-btn">
+                <span class="titulo-acao">Acumular Sol</span>
+                <small class="custo-acao">+10 ⚡</small>
+            </button>
             <button id="btn-explorar" class="acao-btn">
-                <span>Pesquisar</span>
-                <small>-10 ⚡ | +15 🌱</small>
+                <span class="titulo-acao">Pesquisar</span>
+                <small class="custo-acao">-10 ⚡ | +15 🌱</small>
             </button>
             <button id="btn-cultivar" class="acao-btn">
-                <span>Expandir</span>
-                <small>-20 🌱 | +2 👥</small>
+                <span class="titulo-acao">Expandir</span>
+                <small class="custo-acao">-20 🌱 | +2 👥</small>
             </button>
             <button id="btn-proximo" class="acao-btn primario">
-                <span>Avançar</span>
-                <small>Próximo Ciclo</small>
+                <span class="titulo-acao">Avançar Ciclo</span>
+                <small class="custo-acao">Próximo Turno</small>
             </button>
         </footer>
     </div>

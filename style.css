@@ -3,77 +3,118 @@
 }
 
 body {
-    background-color: #121815;
-    color: #d1e7dd;
-    font-family: monospace;
+    background-color: #080c0a;
+    color: #e2f0d9;
+    font-family: system-ui, -apple-system, sans-serif;
     display: flex;
     justify-content: center;
     align-items: center;
     min-height: 100vh;
     margin: 0;
-    padding: 10px;
+    padding: 12px;
 }
 
 #game-container {
     width: 100%;
     max-width: 480px;
-    background: #1b2621;
-    border: 1px solid #2d4a3e;
-    border-radius: 12px;
+    background: #111a14;
+    border: 1px solid #1f382a;
+    border-radius: 16px;
     padding: 16px;
     display: flex;
     flex-direction: column;
-    gap: 12px;
-    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.4);
+    gap: 14px;
+    box-shadow: 0 12px 32px rgba(0, 0, 0, 0.6);
 }
 
 header {
     display: flex;
     justify-content: space-between;
-    align-items: baseline;
-    border-bottom: 1px solid #2d4a3e;
-    padding-bottom: 8px;
+    align-items: center;
+    border-bottom: 1px solid #1f382a;
+    padding-bottom: 10px;
 }
 
-h1 { 
-    margin: 0; 
-    font-size: 1.2rem; 
-    color: #52b788; 
-}
-
-#ciclo-texto {
-    font-size: 0.9rem;
-    color: #74c69d;
+.logo-area h1 {
     margin: 0;
+    font-size: 1.25rem;
+    color: #52b788;
+    letter-spacing: 1px;
+}
+
+.sub-logo {
+    font-size: 0.7rem;
+    color: #6c757d;
+    text-transform: uppercase;
+}
+
+#ciclo-badge {
+    background: #1b2e23;
+    padding: 6px 12px;
+    border-radius: 20px;
+    font-size: 0.8rem;
+    color: #74c69d;
+    border: 1px solid #2d4a3e;
+    font-weight: 600;
 }
 
 #painel-recursos {
-    display: flex;
-    justify-content: space-around;
-    background: #131b17;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 8px;
+}
+
+.recurso-card {
+    background: #15221a;
+    border: 1px solid #1f382a;
+    border-radius: 10px;
     padding: 10px;
-    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.recurso-card .icone {
+    font-size: 1.2rem;
+}
+
+.recurso-card .info {
+    display: flex;
+    flex-direction: column;
+}
+
+.recurso-card .label {
+    font-size: 0.65rem;
+    color: #8da995;
+    text-transform: uppercase;
+}
+
+.recurso-card .valor {
     font-size: 0.95rem;
-    border: 1px solid #1e2e26;
+    font-weight: bold;
+    color: #fff;
+    font-family: monospace;
 }
 
 #terminal-narrativo {
-    height: 240px;
-    background: #0d1210;
-    border: 1px solid #1e2e26;
-    border-radius: 8px;
+    height: 220px;
+    background: #090e0b;
+    border: 1px solid #192b21;
+    border-radius: 10px;
     padding: 12px;
     overflow-y: auto;
-    font-size: 0.85rem;
+    font-family: monospace;
+    font-size: 0.8rem;
     display: flex;
     flex-direction: column;
     gap: 8px;
-    line-height: 1.4;
+    line-height: 1.5;
+    color: #b7e4c7;
 }
 
 #painel-acoes {
     display: grid;
-    grid-template-columns: 1fr 1fr;
+    grid-template-columns: repeat(2, 1fr);
     gap: 10px;
 }
 
@@ -82,46 +123,49 @@ h1 {
 }
 
 .acao-btn {
-    background: #2d4a3e;
-    color: #fff;
-    border: none;
-    padding: 12px 8px;
-    border-radius: 8px;
+    background: #192b21;
+    color: #e2f0d9;
+    border: 1px solid #2d4a3e;
+    padding: 12px 10px;
+    border-radius: 10px;
     cursor: pointer;
-    font-family: monospace;
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: 4px;
-    transition: background 0.2s, transform 0.1s;
+    gap: 3px;
+    transition: all 0.15s ease;
 }
 
 .acao-btn:active {
-    transform: scale(0.98);
+    transform: scale(0.97);
 }
 
-.acao-btn span {
-    font-weight: bold;
-    font-size: 0.9rem;
+.titulo-acao {
+    font-weight: 600;
+    font-size: 0.85rem;
 }
 
-.acao-btn small {
-    font-size: 0.7rem;
-    color: #95d5b2;
-    opacity: 0.9;
+.custo-acao {
+    font-size: 0.68rem;
+    color: #74c69d;
+    opacity: 0.85;
 }
 
 .acao-btn:hover { 
-    background: #40715c; 
+    background: #253d30; 
+    border-color: #40715c;
 }
 
 .acao-btn.primario { 
     background: #52b788; 
-    color: #121815; 
+    color: #080c0a; 
+    border-color: #74c69d;
 }
 
-.acao-btn.primario small {
-    color: #1b2621;
+.acao-btn.primario .custo-acao {
+    color: #111a14;
+    opacity: 1;
+    font-weight: bold;
 }
 
 .acao-btn.primario:hover { 

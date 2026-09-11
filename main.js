@@ -3,20 +3,26 @@ import { atualizarInterface, adicionarLog, avancarCiclo } from './engine.js';
 
 document.addEventListener('DOMContentLoaded', () => {
     atualizarInterface();
-    adicionarLog("Bem-vindo a Solaria. Estabeleça seu futuro sustentável.");
+    adicionarLog("Sistemas online. Bem-vindo a Solaria.");
 
     document.getElementById('btn-proximo').addEventListener('click', () => {
         avancarCiclo();
+    });
+
+    document.getElementById('btn-captar').addEventListener('click', () => {
+        estado.recursos.energia += 10;
+        adicionarLog("Painéis solares ajustados. +10 ⚡ acumulados.");
+        atualizarInterface();
     });
 
     document.getElementById('btn-explorar').addEventListener('click', () => {
         if (estado.recursos.energia >= 10) {
             estado.recursos.energia -= 10;
             estado.recursos.biomassa += 15;
-            adicionarLog("Pesquisa concluída: Novos métodos naturais descobertos.");
+            adicionarLog("Pesquisa concluída: Novos métodos naturais integrados.");
             atualizarInterface();
         } else {
-            adicionarLog("Energia solar insuficiente.");
+            adicionarLog("Erro: Energia solar insuficiente para pesquisar.");
         }
     });
 
@@ -27,7 +33,7 @@ document.addEventListener('DOMContentLoaded', () => {
             adicionarLog("Área verde expandida. Novos membros integrados.");
             atualizarInterface();
         } else {
-            adicionarLog("Biomassa insuficiente.");
+            adicionarLog("Erro: Biomassa insuficiente para expansão.");
         }
     });
 });
