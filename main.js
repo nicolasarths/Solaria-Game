@@ -13,10 +13,10 @@ document.addEventListener('DOMContentLoaded', () => {
         if (estado.recursos.energia >= 10) {
             estado.recursos.energia -= 10;
             estado.recursos.biomassa += 15;
-            adicionarLog("Pesquisa concluída: Novos métodos de integração natural descobertos.");
+            adicionarLog("Pesquisa concluída: Novos métodos naturais descobertos.");
             atualizarInterface();
         } else {
-            adicionarLog("Energia solar insuficiente para pesquisar.");
+            adicionarLog("Energia solar insuficiente.");
         }
     });
 
@@ -24,10 +24,10 @@ document.addEventListener('DOMContentLoaded', () => {
         if (estado.recursos.biomassa >= 20) {
             estado.recursos.biomassa -= 20;
             estado.recursos.comunidade += 2;
-            adicionarLog("Área verde expandida. Novos membros se juntaram à comunidade.");
+            adicionarLog("Área verde expandida. Novos membros integrados.");
             atualizarInterface();
         } else {
-            adicionarLog("Biomassa insuficiente para expansão.");
+            adicionarLog("Biomassa insuficiente.");
         }
     });
 });

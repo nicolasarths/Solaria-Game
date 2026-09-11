@@ -10,13 +10,13 @@
     <div id="game-container">
         <header>
             <h1>Solaria</h1>
-            <p id="ciclo-texto">Ciclo: 1</p>
+            <p id="ciclo-texto">Ciclo 1</p>
         </header>
 
         <section id="painel-recursos">
-            <div class="recurso">🌱 Biomassa: <span id="res-biomassa">50</span></div>
-            <div class="recurso">⚡ Energia Solar: <span id="res-energia">30</span></div>
-            <div class="recurso">👥 Comunidade: <span id="res-comunidade">10</span></div>
+            <div class="recurso">🌱 <span id="res-biomassa">50</span></div>
+            <div class="recurso">⚡ <span id="res-energia">30</span></div>
+            <div class="recurso">👥 <span id="res-comunidade">10</span></div>
         </section>
 
         <main id="terminal-narrativo">
@@ -24,9 +24,18 @@
         </main>
 
         <footer id="painel-acoes">
-            <button id="btn-explorar" class="acao-btn">Pesquisar Tecnologia</button>
-            <button id="btn-cultivar" class="acao-btn">Expandir Cultivo</button>
-            <button id="btn-proximo" class="acao-btn primario">Avançar Ciclo</button>
+            <button id="btn-explorar" class="acao-btn">
+                <span>Pesquisar</span>
+                <small>-10 ⚡ | +15 🌱</small>
+            </button>
+            <button id="btn-cultivar" class="acao-btn">
+                <span>Expandir</span>
+                <small>-20 🌱 | +2 👥</small>
+            </button>
+            <button id="btn-proximo" class="acao-btn primario">
+                <span>Avançar</span>
+                <small>Próximo Ciclo</small>
+            </button>
         </footer>
     </div>
 
