@@ -1,0 +1,72 @@
+body {
+    background-color: #121815;
+    color: #d1e7dd;
+    font-family: monospace;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+}
+
+#game-container {
+    width: 600px;
+    background: #1b2621;
+    border: 1px solid #2d4a3e;
+    border-radius: 6px;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    border-bottom: 1px solid #2d4a3e;
+    padding-bottom: 10px;
+}
+
+h1 { margin: 0; font-size: 1.4rem; color: #52b788; }
+
+#painel-recursos {
+    display: flex;
+    justify-content: space-between;
+    background: #131b17;
+    padding: 10px;
+    border-radius: 4px;
+}
+
+#terminal-narrativo {
+    height: 200px;
+    background: #0d1210;
+    border: 1px solid #1e2e26;
+    border-radius: 4px;
+    padding: 10px;
+    overflow-y: auto;
+    font-size: 0.9rem;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+#painel-acoes {
+    display: flex;
+    gap: 10px;
+}
+
+.acao-btn {
+    flex: 1;
+    background: #2d4a3e;
+    color: #fff;
+    border: none;
+    padding: 10px;
+    border-radius: 4px;
+    cursor: pointer;
+    font-family: monospace;
+}
+
+.acao-btn:hover { background: #40715c; }
+.acao-btn.primario { background: #52b788; color: #121815; font-weight: bold; }
+.acao-btn.primario:hover { background: #74c69d; }

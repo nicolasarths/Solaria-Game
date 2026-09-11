@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Solaria - Gestão de Colônia</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div id="game-container">
+        <header>
+            <h1>Solaria</h1>
+            <p id="ciclo-texto">Ciclo: 1</p>
+        </header>
+
+        <section id="painel-recursos">
+            <div class="recurso">🌱 Biomassa: <span id="res-biomassa">50</span></div>
+            <div class="recurso">⚡ Energia Solar: <span id="res-energia">30</span></div>
+            <div class="recurso">👥 Comunidade: <span id="res-comunidade">10</span></div>
+        </section>
+
+        <main id="terminal-narrativo">
+            <div id="log-historico"></div>
+        </main>
+
+        <footer id="painel-acoes">
+            <button id="btn-explorar" class="acao-btn">Pesquisar Tecnologia</button>
+            <button id="btn-cultivar" class="acao-btn">Expandir Cultivo</button>
+            <button id="btn-proximo" class="acao-btn primario">Avançar Ciclo</button>
+        </footer>
+    </div>
+
+    <script type="module" src="main.js"></script>
+</body>
+</html>
