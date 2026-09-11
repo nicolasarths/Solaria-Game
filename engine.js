@@ -1,36 +1,36 @@
-import { estado } from './state.js';
+import { obterEstado } from './state.js';
 
-// Lista interna onde os módulos de ação vão se registrar sozinhos
-const acoesRegistradas = [];
+export function atualizarHUD() {
+    const estado = obterEstado();
+    if (!estado.personagem) {
+        document.getElementById('game-header').classList.add('hidden');
+        return;
+    }
 
-export function registrarAcao(config) {
-    acoesRegistradas.push(config);
+    const p = estado.personagem;
+    document.getElementById('game-header').classList.remove('hidden');
+    
+    document.getElementById('status-rapido').innerHTML = `
+        <div style="font-weight: bold; color: #52b788;">👤 ${p.nome}</div>
+        <div style="display: flex; gap: 12px; font-size: 0.85rem;">
+            <span>❤️ ${p.vida}/${p.maxVida}</span>
+            <span>🔮 ${p.pm !== undefined ? p.pm : 50}/${p.maxPm || 50}</span>
+            <span>💎 ${estado.recursos.creditos}</span>
+        </div>
+    `;
 }
 
-export function obterAcoes() {
-    return acoesRegistradas;
+export function abrirModal(htmlConteudo) {
+    const overlay = document.getElementById('modal-overlay');
+    const corpo = document.getElementById('modal-corpo');
+    corpo.innerHTML = htmlConteudo;
+    overlay.classList.remove('hidden');
 }
 
-export function adicionarLog(mensagem) {
-    const logDiv = document.getElementById('log-historico');
-    const p = document.createElement('p');
-    p.style.margin = '0';
-    p.textContent = `> ${mensagem}`;
-    logDiv.appendChild(p);
-    logDiv.scrollTop = logDiv.scrollHeight;
+export function fecharModal() {
+    document.getElementById('modal-overlay').classList.add('hidden');
 }
 
-export function atualizarInterface() {
-    document.getElementById('ciclo-texto').textContent = estado.ciclo;
-    document.getElementById('res-biomassa').textContent = estado.recursos.biomassa;
-    document.getElementById('res-energia').textContent = estado.recursos.energia;
-    document.getElementById('res-comunidade').textContent = estado.recursos.comunidade;
-}
-
-export function avancarCiclo() {
-    estado.ciclo++;
-    estado.recursos.biomassa += Math.floor(estado.recursos.comunidade * 1.5);
-    estado.recursos.energia += 5;
-    adicionarLog(`Ciclo ${estado.ciclo} iniciado. A colônia produziu recursos.`);
-    atualizarInterface();
+export function renderizarTela(html) {
+    document.getElementById('tela-principal').innerHTML = html;
 }

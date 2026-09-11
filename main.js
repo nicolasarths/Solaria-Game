@@ -1,29 +1,44 @@
-import { atualizarInterface, adicionarLog, obterAcoes } from './engine.js';
-
-// Importa automaticamente todos os arquivos de ação da pasta
-import './acoes/captar.js';
-import './acoes/explorar.js';
-import './acoes/cultivar.js';
-import './acoes/proximo.js';
+import { obterEstado } from './state.js';
+import { atualizarHUD, abrirModal, fecharModal } from './engine.js';
+import { iniciarSeletor } from './modulos/seletor.js';
+import { iniciarExploracao } from './modulos/exploracao.js';
 
 document.addEventListener('DOMContentLoaded', () => {
-    atualizarInterface();
-    adicionarLog("Sistemas online. Bem-vindo a Solaria.");
+    atualizarHUD();
 
-    const painelAcoes = document.getElementById('painel-acoes');
-    painelAcoes.innerHTML = '';
+    const estado = obterEstado();
+    if (!estado.personagem) {
+        iniciarSeletor();
+    } else {
+        // Se já tiver personagem salvo, retoma de onde parou
+        iniciarExploracao();
+    }
 
-    // Lê todas as ações registradas e cria os botões dinamicamente
-    obterAcoes().forEach(acao => {
-        const btn = document.createElement('button');
-        btn.className = `acao-btn ${acao.primario ? 'primario' : ''}`;
-        
-        btn.innerHTML = `
-            <span class="titulo-acao">${acao.titulo}</span>
-            <small class="custo-acao">${acao.custo}</small>
-        `;
+    // Eventos dos botões de menu superior (Ficha / Inventário)
+    document.getElementById('btn-ficha').addEventListener('click', () => {
+        const est = obterEstado();
+        const p = est.personagem;
+        abrirModal(`
+            <h3 style="color: #52b788; margin: 0;">Ficha de Personagem</h3>
+            <p><strong>Nome:</strong> ${p.nome}</p>
+            <p><strong>Vida:</strong> ${p.vida} / ${p.maxVida}</p>
+            <p><strong>Ataque:</strong> ${p.ataque}</p>
+            <p><strong>Defesa:</strong> ${p.defesa}</p>
+            <p><strong>Buffs ativos:</strong> ${est.buffs.length ? est.buffs.join(', ') : 'Nenhum'}</p>
+        `);
+    });
 
-        btn.addEventListener('click', acao.executar);
-        painelAcoes.appendChild(btn);
+    document.getElementById('btn-inventario').addEventListener('click', () => {
+        const est = obterEstado();
+        abrirModal(`
+            <h3 style="color: #52b788; margin: 0;">Inventário</h3>
+            <ul>
+                ${est.inventario.length ? est.inventario.map(item => `<li>${item}</li>`).join('') : '<li>Inventário vazio</li>'}
+            </ul>
+        `);
+    });
+
+    document.getElementById('modal-fechar').addEventListener('click', () => {
+        fecharModal();
     });
 });

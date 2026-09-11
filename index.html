@@ -3,49 +3,45 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Solaria - Gestão de Colônia</title>
+    <title>Solaria - Crônicas</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <div id="game-container">
-        <header>
-            <div class="logo-area">
-                <h1>SOLARIA</h1>
-                <span class="sub-logo">Terminal de Colônia</span>
+    <!-- Topo com Status Rápido e Botões de Menu -->
+        <header id="game-header" class="hidden">
+            <div id="status-rapido" style="display: flex; flex-direction: column; gap: 4px;">
+                <!-- Preenchido dinamicamente pelo engine.js -->
             </div>
-            <div id="ciclo-badge">Ciclo <span id="ciclo-texto">1</span></div>
+            <div id="menu-topo">
+                <button id="btn-ficha" class="menu-btn">Ficha</button>
+                <button id="btn-inventario" class="menu-btn">Inventário</button>
+            </div>
+        </header>
+    <div id="game-container">
+        <!-- Topo com Status Rápido e Botões de Menu -->
+        <header id="game-header" class="hidden">
+            <div id="status-rapido">
+                <span id="txt-vida">❤️ 100</span>
+                <span id="txt-recurso">⚡ 30</span>
+            </div>
+            <div id="menu-topo">
+                <button id="btn-ficha" class="menu-btn">Ficha</button>
+                <button id="btn-inventario" class="menu-btn">Inventário</button>
+            </div>
         </header>
 
-        <section id="painel-recursos">
-            <div class="recurso-card">
-                <span class="icone">🌱</span>
-                <div class="info">
-                    <span class="label">Biomassa</span>
-                    <span id="res-biomassa" class="valor">50</span>
-                </div>
+        <!-- Container Dinâmico de Modais/Telas -->
+        <div id="modal-overlay" class="hidden">
+            <div id="modal-conteudo">
+                <button id="modal-fechar">X</button>
+                <div id="modal-corpo"></div>
             </div>
-            <div class="recurso-card">
-                <span class="icone">⚡</span>
-                <div class="info">
-                    <span class="label">Energia</span>
-                    <span id="res-energia" class="valor">30</span>
-                </div>
-            </div>
-            <div class="recurso-card">
-                <span class="icone">👥</span>
-                <div class="info">
-                    <span class="label">Povo</span>
-                    <span id="res-comunidade" class="valor">10</span>
-                </div>
-            </div>
-        </section>
+        </div>
 
-        <main id="terminal-narrativo">
-            <div id="log-historico"></div>
+        <!-- Tela Principal do Jogo / Estados -->
+        <main id="tela-principal">
+            <!-- Injeta o conteúdo da fase/estado atual aqui -->
         </main>
-
-        <!-- Os botões aparecem aqui dinamicamente -->
-        <footer id="painel-acoes"></footer>
     </div>
 
     <script type="module" src="main.js"></script>
