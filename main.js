@@ -1,39 +1,29 @@
-import { estado } from './state.js';
-import { atualizarInterface, adicionarLog, avancarCiclo } from './engine.js';
+import { atualizarInterface, adicionarLog, obterAcoes } from './engine.js';
+
+// Importa automaticamente todos os arquivos de ação da pasta
+import './acoes/captar.js';
+import './acoes/explorar.js';
+import './acoes/cultivar.js';
+import './acoes/proximo.js';
 
 document.addEventListener('DOMContentLoaded', () => {
     atualizarInterface();
     adicionarLog("Sistemas online. Bem-vindo a Solaria.");
 
-    document.getElementById('btn-proximo').addEventListener('click', () => {
-        avancarCiclo();
-    });
+    const painelAcoes = document.getElementById('painel-acoes');
+    painelAcoes.innerHTML = '';
 
-    document.getElementById('btn-captar').addEventListener('click', () => {
-        estado.recursos.energia += 10;
-        adicionarLog("Painéis solares ajustados. +10 ⚡ acumulados.");
-        atualizarInterface();
-    });
+    // Lê todas as ações registradas e cria os botões dinamicamente
+    obterAcoes().forEach(acao => {
+        const btn = document.createElement('button');
+        btn.className = `acao-btn ${acao.primario ? 'primario' : ''}`;
+        
+        btn.innerHTML = `
+            <span class="titulo-acao">${acao.titulo}</span>
+            <small class="custo-acao">${acao.custo}</small>
+        `;
 
-    document.getElementById('btn-explorar').addEventListener('click', () => {
-        if (estado.recursos.energia >= 10) {
-            estado.recursos.energia -= 10;
-            estado.recursos.biomassa += 15;
-            adicionarLog("Pesquisa concluída: Novos métodos naturais integrados.");
-            atualizarInterface();
-        } else {
-            adicionarLog("Erro: Energia solar insuficiente para pesquisar.");
-        }
-    });
-
-    document.getElementById('btn-cultivar').addEventListener('click', () => {
-        if (estado.recursos.biomassa >= 20) {
-            estado.recursos.biomassa -= 20;
-            estado.recursos.comunidade += 2;
-            adicionarLog("Área verde expandida. Novos membros integrados.");
-            atualizarInterface();
-        } else {
-            adicionarLog("Erro: Biomassa insuficiente para expansão.");
-        }
+        btn.addEventListener('click', acao.executar);
+        painelAcoes.appendChild(btn);
     });
 });

@@ -1,5 +1,16 @@
 import { estado } from './state.js';
 
+// Lista interna onde os módulos de ação vão se registrar sozinhos
+const acoesRegistradas = [];
+
+export function registrarAcao(config) {
+    acoesRegistradas.push(config);
+}
+
+export function obterAcoes() {
+    return acoesRegistradas;
+}
+
 export function adicionarLog(mensagem) {
     const logDiv = document.getElementById('log-historico');
     const p = document.createElement('p');
