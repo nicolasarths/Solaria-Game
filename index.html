@@ -7,22 +7,16 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <!-- Topo com Status Rápido e Botões de Menu -->
-        <header id="game-header" class="hidden">
-            <div id="status-rapido" style="display: flex; flex-direction: column; gap: 4px;">
-                <!-- Preenchido dinamicamente pelo engine.js -->
-            </div>
-            <div id="menu-topo">
-                <button id="btn-ficha" class="menu-btn">Ficha</button>
-                <button id="btn-inventario" class="menu-btn">Inventário</button>
-            </div>
-        </header>
+    <div id="menu-topo">
+    <button id="btn-viajar" class="menu-btn">Viajar</button>
+    <button id="btn-ficha" class="menu-btn">Ficha</button>
+    <button id="btn-inventario" class="menu-btn">Inventário</button>
+</div>
     <div id="game-container">
         <!-- Topo com Status Rápido e Botões de Menu -->
         <header id="game-header" class="hidden">
-            <div id="status-rapido">
-                <span id="txt-vida">❤️ 100</span>
-                <span id="txt-recurso">⚡ 30</span>
+            <div id="status-rapido" style="display: flex; flex-direction: column; gap: 4px;">
+                <!-- Preenchido dinamicamente pelo engine.js -->
             </div>
             <div id="menu-topo">
                 <button id="btn-ficha" class="menu-btn">Ficha</button>
@@ -42,6 +36,23 @@
         <main id="tela-principal">
             <!-- Injeta o conteúdo da fase/estado atual aqui -->
         </main>
+
+        <!-- Painel de Stats em Tempo Real -->
+        <div id="painel-stats" style="margin-top: 15px; width: 100%; background: #111a14; border: 1px solid #1f3829; border-radius: 8px; padding: 12px; box-sizing: border-box; font-size: 0.85rem;">
+            <div style="font-weight: bold; color: #e9c46a; margin-bottom: 8px; display: flex; justify-content: space-between; align-items: center;">
+                <input type="text" id="edit-nome" class="input-nome" placeholder="Nome" style="background: transparent; border: none; border-bottom: 1px dashed #e9c46a; color: #e9c46a; font-weight: bold; width: 50%;">
+                <span id="stat-local" style="font-size: 0.75rem; color: #74c69d;">📍 Solaria</span>
+            </div>
+            <div style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 8px;">
+                <div>❤️ Vida: <input type="number" id="edit-vida" class="input-stat"> / <input type="number" id="edit-maxvida" class="input-stat"></div>
+                <div>🔮 PM: <input type="number" id="edit-pm" class="input-stat"> / <input type="number" id="edit-maxpm" class="input-stat"></div>
+                <div>⚔️ Atq: <input type="number" id="edit-ataque" class="input-stat"> (+<input type="number" id="edit-bonus-atq" class="input-stat">)</div>
+                <div>🛡️ Def: <input type="number" id="edit-defesa" class="input-stat"> (+<input type="number" id="edit-bonus-def" class="input-stat">)</div>
+                <div>🎯 CD: <input type="number" id="edit-cd" class="input-stat"></div>
+                <div>💎 Créditos: <input type="number" id="edit-creditos" class="input-stat"></div>
+                <div>📦 Itens: <span id="val-itens-qtd">0</span></div>
+            </div>
+        </div>
     </div>
 
     <script type="module" src="main.js"></script>

@@ -172,3 +172,16 @@ header#game-header {
     display: none;
 }
 
+.input-stat {
+    background: #080c0a;
+    border: 1px solid #1f3829;
+    color: #e2f0d9;
+    border-radius: 4px;
+    padding: 2px 4px;
+    width: 45px;
+    font-size: 0.85rem;
+    text-align: center;
+}
+#edit-nome {
+    border-bottom: 1px dashed #e9c46a;
+}
